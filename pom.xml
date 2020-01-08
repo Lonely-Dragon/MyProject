@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!--    modelVersion: 指定了pom模型的版本，如果安装了Maven2Maven3，那么版本必定是4.0.0-->
+    <modelVersion>4.0.0</modelVersion>
+<!--    groupId 项目的唯一标识，通常使用全限定的包名来区分项目和其他项目，并且构建时生成的路径也是由此生成-->
+    <groupId>com.sakura</groupId>
+<!--    构件id，和groupId一起唯一标识一个构件，在特定groupID下，artifactId也是唯一的
+        构件是项目产生唯一或使用的一种东西，Maven为项目产生的构件包括：Jar包，源码，二进制发布和部署包War等-->
+    <artifactId>topPom</artifactId>
+<!--    项目当前版本，格式为-->
+    <version>1.0</version>
+</project>
