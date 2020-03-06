@@ -9,6 +9,78 @@
 <!--    构件id，和groupId一起唯一标识一个构件，在特定groupID下，artifactId也是唯一的
         构件是项目产生唯一或使用的一种东西，Maven为项目产生的构件包括：Jar包，源码，二进制发布和部署包War等-->
     <artifactId>topPom</artifactId>
+    <modules>
+        <module>common</module>
+        <module>login</module>
+        <module>register</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.6.RELEASE</version>
+    </parent>
+
 <!--    项目当前版本，格式为-->
     <version>1.0</version>
+
+    
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+    </properties>
+
+<!--    父项目依赖，可继承-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+    </dependencies>
+
+<!--    父项目声明依赖，子项目需再次声明-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <!--                    <compilerArguments>-->
+                    <!--&lt;!&ndash;                        <extdirs>E:\IDE\project\tobacco_ebp\business\src\main\resources\lib</extdirs>&ndash;&gt;-->
+                    <!--                        <extdirs>${project.basedir}/lib</extdirs>-->
+                    <!--                    </compilerArguments>-->
+                </configuration>
+            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.springframework.boot</groupId>-->
+            <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--            </plugin>-->
+        </plugins>
+    </build>
+
 </project>
