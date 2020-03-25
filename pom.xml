@@ -9,22 +9,22 @@
 <!--    构件id，和groupId一起唯一标识一个构件，在特定groupID下，artifactId也是唯一的
         构件是项目产生唯一或使用的一种东西，Maven为项目产生的构件包括：Jar包，源码，二进制发布和部署包War等-->
     <artifactId>topPom</artifactId>
-    <modules>
-        <module>common</module>
-        <module>register</module>
-        <module>login-frame</module>
-    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.6.RELEASE</version>
     </parent>
+    
+    <modules>
+        <module>common</module>
+        <module>register</module>
+        <module>loginframe/springSecurity</module>
+    </modules>
+
 
 <!--    项目当前版本，格式为-->
     <version>1.0</version>
-
-    
     <packaging>pom</packaging>
 
     <properties>
@@ -44,6 +44,9 @@
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
+
+       
+        
     </dependencies>
 
 <!--    父项目声明依赖，子项目需再次声明-->
@@ -53,6 +56,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
             </dependency>
             
             <dependency>
@@ -62,9 +66,28 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>1.25</version>
+            </dependency>
+            
         </dependencies>
     </dependencyManagement>
 
+    <profiles>
+        <profile>
+            <id>test</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profileActive>test</profileActive>
+            </properties>
+        </profile>
+    </profiles>
+    
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>

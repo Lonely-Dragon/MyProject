@@ -1,0 +1,10 @@
+server:
+  port: 12001
+
+spring:
+  application:
+    name: spring-security
+
+
+  profiles:
+    active: test
