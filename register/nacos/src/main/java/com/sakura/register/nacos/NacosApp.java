@@ -7,8 +7,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-//@NacosPropertySource( dataId = "test",autoRefreshed = true)
-//@EnableNacosConfig(globalProperties = @NacosProperties(serverAddr = "127.0.0.1:8848"))
+/**
+ * springboot nacos
+ * @NacosPropertySource( dataId = "test",autoRefreshed = true)
+ * @EnableNacosConfig(globalProperties = @NacosProperties(serverAddr = "127.0.0.1:8848"))
+ */
 public class NacosApp {
     public static void main(String[] args) {
         SpringApplication.run(NacosApp.class);

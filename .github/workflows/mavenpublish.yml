@@ -28,8 +28,8 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.ali_host }}
-        port: 22
-        username: root
+        port: ${{ secrets.ali_port }}
+        username: ${{ secrets.ali_username }}
         password: ${{ secrets.ali_password }}
         script: |
           free -h 

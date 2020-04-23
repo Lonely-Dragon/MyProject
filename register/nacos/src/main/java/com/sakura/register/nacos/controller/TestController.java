@@ -14,20 +14,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class TestController {
     
+    //springcloud nacos
     @Value("${name}")
     String test = "test";
 
-//    @NacosValue(value = "${namesdf}" ,autoRefreshed = true)
-//    String testboot;
+    /**
+     * springboot nacos config value demo
+     * @NacosValue(value ="${namesdf}" ,autoRefreshed = true)
+     * String testboot;
+     */
     
-    @Scheduled(cron = "*/1 * * * * *")
+    @Scheduled(cron = "*/2 * * * * *")
     @RequestMapping(value = "/go",method = RequestMethod.GET)
     public void test(){
         //cloud test
         System.out.println(test);
         
-        //boot test
-//        System.out.println(testboot);
     }
     
     
