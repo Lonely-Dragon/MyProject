@@ -22,5 +22,16 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+      
+      
+    - name: ssh
+        uses: appleboy/ssh-action@v0.0.2
+        with:
+          host: ${{ ali_host }}
+          port: 22
+          username: root
+          password: ${{ ali_password }}
+        run:
+          ls
 
 

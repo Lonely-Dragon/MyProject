@@ -76,14 +76,15 @@
         </dependencies>
     </dependencyManagement>
 
+<!--    默认profile设置 -->
     <profiles>
         <profile>
-            <id>test</id>
+            <id>default</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <profileActive>test</profileActive>
+                <profileActive>default</profileActive>
             </properties>
         </profile>
     </profiles>

@@ -17,5 +17,24 @@
         <module>nacos</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+        </dependency>
+    </dependencies>
+    
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profileActive>default</profileActive>
+            </properties>
+        </profile>
+    </profiles>
+
 
 </project>
