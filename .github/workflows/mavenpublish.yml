@@ -25,13 +25,14 @@ jobs:
       
       
     - name: ssh
-        uses: appleboy/ssh-action@v0.0.2
-        with:
-          host: ${{ ali_host }}
-          port: 22
-          username: root
-          password: ${{ ali_password }}
-        run:
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.ali_host }}
+        port: 22
+        username: root
+        password: ${{ secretsali_password }}
+        script: |
+          free -h 
           ls
 
 
