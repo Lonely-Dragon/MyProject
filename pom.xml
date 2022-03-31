@@ -29,7 +29,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
+        <spring-boot.version>2.5.12</spring-boot.version>
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
         <maven-plugins.version>3.7.0</maven-plugins.version>
         <maven-plugins.surefire.version>3.0.0-M4</maven-plugins.surefire.version>
