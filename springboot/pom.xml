@@ -1,90 +1,93 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!--    modelVersion: 指定了pom模型的版本，如果安装了Maven2Maven3，那么版本必定是4.0.0-->
-    <modelVersion>4.0.0</modelVersion>
-    <!--    groupId 项目的唯一标识，通常使用全限定的包名来区分项目和其他项目，并且构建时生成的路径也是由此生成-->
-    <groupId>com.sakura</groupId>
-    <!--    构件id，和groupId一起唯一标识一个构件，在特定groupID下，artifactId也是唯一的
-            构件是项目产生唯一或使用的一种东西，Maven为项目产生的构件包括：Jar包，源码，二进制发布和部署包War等-->
-    <artifactId>topPom</artifactId>
-
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.14</version>
+        <artifactId>topPom</artifactId>
+        <groupId>com.sakura</groupId>
+        <version>1.0</version>
     </parent>
-
-    <modules>
-        <module>common</module>
-        <module>springboot</module>
-        <module>JavaBasis</module>
-    </modules>
-
-
-    <!--    项目当前版本，格式为-->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.sakura.springboot</groupId>
+    <artifactId>springboot-parent</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-
+    
+    <modules>
+        <module>security</module>
+        <module>pojo</module>
+    </modules>
+    
     <properties>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.7.14</spring-boot.version>
-        <spring-cloud.version>2022.0.1</spring-cloud.version>
-<!--        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>-->
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
         <maven-plugins.version>3.7.0</maven-plugins.version>
         <maven-plugins.surefire.version>3.0.0-M4</maven-plugins.surefire.version>
-
     </properties>
 
-    <!--    父项目依赖，可继承-->
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-        <!--json-->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.54</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.25</version>
         </dependency>
+        <dependency>
+            <groupId>com.sakura</groupId>
+            <artifactId>common-swagger-ui</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+<!--        日志-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+<!--        swagger-ui-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.9.6</version>
+        </dependency>
+        <!--       集成板 springSecurity-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.tomcat.embed</groupId>-->
+<!--            <artifactId>tomcat-embed-jasper</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.security</groupId>-->
+<!--            <artifactId>spring-security-config</artifactId>-->
+<!--        </dependency>-->
 
     </dependencies>
 
-    <!--    父项目声明依赖，子项目需再次声明-->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring-boot.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.yaml</groupId>
-                <artifactId>snakeyaml</artifactId>
-                <version>1.25</version>
-            </dependency>
-
-        </dependencies>
-    </dependencyManagement>
-
-    <!--    默认profile设置 -->
     <profiles>
         <profile>
             <id>default</id>
@@ -96,7 +99,6 @@
             </properties>
         </profile>
     </profiles>
-
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
@@ -155,7 +157,6 @@
             </snapshots>
         </repository>
     </repositories>
-
     <pluginRepositories>
         <!--阿里云代理Spring 插件仓库-->
         <pluginRepository>
@@ -170,5 +171,4 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
 </project>

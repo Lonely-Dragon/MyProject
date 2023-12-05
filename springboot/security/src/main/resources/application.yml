@@ -1,0 +1,16 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: security
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false
+    username: root
+    password: root
+
+mybatis-plus:
+  type-aliases-package: com.sakura.springsecurity.mapper
+  configuration:
+    map-underscore-to-camel-case: true

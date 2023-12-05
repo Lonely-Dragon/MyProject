@@ -2,8 +2,6 @@ MyProject
 
 ----
 
-Register
-- Nacos
 
 ----
 
